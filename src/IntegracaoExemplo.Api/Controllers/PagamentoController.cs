@@ -19,9 +19,8 @@ namespace IntegracaoExemplo.Api.Controllers
         }
 
         [HttpPost("pagamento/{nomeParceiro}/pagar")]
-        public IActionResult Pagar([FromRoute] string nomeParceiro, [FromBody] PagamentoDto pagamentoDto)
+        public IActionResult Pagar([FromRoute] Parceiros parceiro, [FromBody] PagamentoDto pagamentoDto)
         {
-            var parceiro = Enum.Parse<Parceiros>(nomeParceiro);
             var response = _initialHandler.Pagar(parceiro, pagamentoDto);
             return Ok(response);
         }
